@@ -34,9 +34,9 @@ namespace PileObjet
             Console.WriteLine("Fin du programme");
             Console.ReadKey();
         }
-        static void TestePileVidePleine(int elements)
+        static void TestePileVidePleine()
         {
-            Pile unePile = new Pile(elements);
+            Pile<int> unePile = new Pile<int>();
             if (unePile.PileVide())
             {
                 Console.WriteLine("La pile est vide");
@@ -45,27 +45,19 @@ namespace PileObjet
             {
                 Console.WriteLine("La pile n'est pas vide");
             }
-            if (unePile.PilePleine())
-            {
-                Console.WriteLine("La pile est pleine");
-            }
-            else
-            {
-                Console.WriteLine("La pile n'est pas pleine");
-            }
         }
-        static void TesteEmpiler(int nbElements)
+        static void TesteEmpiler()
         {
-            Pile unePile = new Pile(nbElements);
+            Pile<int> unePile = new Pile<int>();
             unePile.Empiler(2);
             unePile.Empiler(6);
             unePile.Empiler(14);
         }
-        static void TesteEmpilerDepiler(int nbElements)
+        static void TesteEmpilerDepiler()
         {
             try
             {
-                Pile unePile = new Pile(nbElements);
+                Pile<int> unePile = new Pile<int>();
                 unePile.Empiler(2);
                 unePile.Empiler(14);
                 unePile.Empiler(6);
@@ -85,9 +77,9 @@ namespace PileObjet
         {
             int resultat = pNbAConvertir;
             int reste;
-            Pile unePile = new Pile(pNbElements);
+            Pile<int> unePile = new Pile<int>();
 
-            while (resultat != 0 && !unePile.PilePleine())
+            while (resultat != 0)
             {
                 reste = resultat % pNewbase;
                 resultat = resultat / pNewbase;

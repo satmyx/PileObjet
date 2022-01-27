@@ -11,47 +11,36 @@ namespace MesOutils
     /// On ajoute après le dernier élément ajouté
     /// On retire toujours le dernier élément ajouté
     /// </summary>
-    class Pile
+    class Pile<T>
     {
-        /// <summary>
-        /// Nombre maximum d'élements de la Pile
-        /// </summary>
-        private int nbMaxElt;
         /// <summary>
         /// Liste contenant les élements de la Pile
         /// </summary>
-        private List<int> elements;
+        private List<T> elements;
 
-        public Pile(int nbMaxElt)
+        public Pile()
         {
-            this.nbMaxElt = nbMaxElt;
             // Crée une liste vide a partir d'elements
-            this.elements = new List<int>();
+            this.elements = new List<T>();
         }
         public bool PileVide()
         {
             return this.elements.Count == 0;
         }
-        public bool PilePleine()
+        /// <summary>
+        /// Place l'élément passé en paramètre au sommet de la pile
+        /// </summary>
+        /// <param name="valeur">Valeur à empiler</param>
+        public void Empiler(T valeur)
         {
-            return this.elements.Count == this.nbMaxElt;
+            this.elements.Add(valeur);
         }
-        public void Empiler(int nb)
-        {
-            if (PilePleine() == false)
-            {
-                this.elements.Add(nb);
-            }
-            else
-            {
-                throw new Exception("Impossible d'empiler, pile pleine");
-            }
-        }
-        public int Depiler()
+        public int Count { get => this.elements.Count; }
+        public T Depiler()
         {
             if (PileVide() == false)
             {
-                int nbARetourner = this.elements[this.elements.Count - 1];
+                T nbARetourner = this.elements[this.elements.Count - 1];
                 this.elements.Remove(this.elements[this.elements.Count - 1]);
                 return nbARetourner;
             }
