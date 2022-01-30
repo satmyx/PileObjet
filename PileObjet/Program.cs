@@ -26,15 +26,25 @@ namespace PileObjet
                 //Console.WriteLine("Nombre saisi : " + nbSaisi);
                 //nbSaisi = Utilitaire.SaisirNb(2, 16);
                 //Console.WriteLine("Nombre saisi : " + nbSaisi);
-                TestPile.TestePileVide();
-                TestPile.TesteEmpiler();
-                TestPile.TesteEmpilerDepiler();
+                //TestPile.TestePileVide();
+                //TestPile.TesteEmpiler();
+                //TestPile.TesteEmpilerDepiler();
                 // Appels des méthodes de tests conversion
-                TestPile.TesteConversion();
-                TestPile.TesteConversion(154, 2);
-                TestPile.TesteConversion(11, 16);
-                TestPile.TesteConversion(2986, 16);
-                TestPile.TesteConversion(9999, 16);
+                //TestPile.TesteConversion();
+                //TestPile.TesteConversion(154, 2);
+                //TestPile.TesteConversion(11, 16);
+                //TestPile.TesteConversion(2986, 16);
+                //TestPile.TesteConversion(9999, 16);
+                // Lorem
+                String phrase = UtilitaireAPI.RecupereLoremIpsum(3);
+                Console.WriteLine("---------------------------");
+                Console.WriteLine("\n\nphrase: ");
+                Console.WriteLine(phrase);
+                String phraseInversee = Utilitaire.InversePhrase(phrase);
+                Console.WriteLine("\nphraseInversee : ");
+                Console.WriteLine(phraseInversee);
+                Console.WriteLine("---------------------------");
+                TestPile.TesteInversePhrase();
             }
             catch(Exception ex)
             {

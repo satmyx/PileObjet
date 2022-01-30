@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using PileObjet.Tests;
 using MesOutils;
+using System.Net.Http;
+using System.Net.Http.Headers;
 
 namespace Utilitaires
 {
@@ -91,6 +93,38 @@ namespace Utilitaires
             else
             {
                 return "Impossible de convertir, la pile est trop petite";
+            }
+        }
+        public static string InversePhrase(String phrase)
+        {
+            String message = string.Join(" ", phrase.Split(' ').Reverse());
+            return message;
+
+        }
+    }
+    public static class UtilitaireAPI
+    {
+        public static String RecupereLoremIpsum(int nbParagraphes)
+        {
+            HttpClient client = new HttpClient();
+
+
+            client.DefaultRequestHeaders.Accept.Add(
+                 new MediaTypeWithQualityHeaderValue("application/text"));
+            String url = $"https://loripsum.net/api/{nbParagraphes}/short/plaintext";
+
+            var response = client.GetAsync(url).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string responseBody = response.Content.ReadAsStringAsync().Result;
+
+                return responseBody;
+
+            }
+            else
+            {
+                throw new Exception("Erreur API : " + response.StatusCode + " " + response.ReasonPhrase);
             }
         }
     }
